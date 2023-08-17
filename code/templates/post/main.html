@@ -1,0 +1,25 @@
+{% extends "post/base.html" %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+    
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    {% for i in data %}
+                    <div class="card my-5">
+                        <img src="{% static  "img/test.jpeg" %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{i}}</h5>
+                            <p class="card-text">Очень важные и глубокие рассуждения.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

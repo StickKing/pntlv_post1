@@ -1,0 +1,41 @@
+version: '3'
+services:
+  
+  db:
+    container_name: Database
+    image: postgres
+    volumes:
+      - ./data:/var/lib/pgsql/data
+    environment:
+      - POSTGRES_DB=post
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=verystrongpasswd
+      - PGDATA=/var/lib/pgsql/data/pgdata
+
+  web:
+    container_name: Web-app
+    build: ./code
+    command: bash -c "python manage.py makemigrations &&
+            python manage.py migrate && python manage.py collectstatic --noinput &&
+            gunicorn mysite.wsgi:application --bind 0.0.0.0:8001"
+    volumes:
+      - ./code:/code
+    environment:
+      - POSTGRES_DB=post
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=verystrongpasswd
+    links:
+      - "db:db"
+    expose:
+      - "8001"
+
+  nginx:
+    container_name: NGINX
+    build: ./nginx
+    volumes:
+      - ./code/static:/mysite/static
+      - ./code/media:/mysite/media
+    ports:
+      - "8001:80"
+    links: 
+      - "web:web"

@@ -1,0 +1,78 @@
+{% load static %}
+<html lang="ru" data-bs-theme="dark">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>{% block title %} {% endblock %}</title>
+        <link href="{% static  "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+        <link rel = "stylesheet" type = "text/css" href="{% static 'highlight/styles/default.min.css'%}">
+        <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "post/js/tools.js" %}"></script>
+        <script src = "{% static "highlight/highlight.min.js" %}"></script>
+    </head>
+
+    <body class="d-flex flex-column min-vh-100 bg-dark">
+       
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+
+        <!--MAIN-->
+        <main class="bg-dark">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <!--NAV 2-->
+                    <nav class="col">
+                        {% block nav2 %} {% endblock %}
+                    </nav>
+
+                    <!--ARTICLE-->
+                    <article class="col-13 col-sm-9 col-md-9 col-lg-7 col-xl-7 col-xxl-7 justify-content-center">
+                        {% block content %} {% endblock %}
+                    </article>
+
+                    <!--ASIDE-->
+                    <aside class="col">
+                        {% block aside %} {% endblock %}
+                    </aside>
+                </div>
+            </div>
+        </main>
+        
+    </body>
+
+</html>
