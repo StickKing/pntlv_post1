@@ -1,7 +1,7 @@
 # Пример простого веб-приложения в контейнере
 Данный репозиторий создан для статьи на [pntlv.ru](https://pntlv.ru/post/gotovim-proekt-django-nginx-gunicorn-postgresql-v-docker/)
 ## INSTALL
-Необзодимо установить docker.
+Необходимо установить docker.
 Загрузить код:
 ```
 git clone https://github.com/StickKing/pntlv_post1
